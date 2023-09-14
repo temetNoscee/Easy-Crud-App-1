@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const dbService  =require('./dbService');
+const path = require('path');
 
 const dotenv = require('dotenv');
 const DbService = require('./dbService');
@@ -11,7 +12,10 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}))
 
-
+app.get('/', (req,res)=>{
+    res.sendFile(path.resolve("./client/index.html"));
+    
+})
 
 //create
 app.post('/insert',(req,res)=>{
